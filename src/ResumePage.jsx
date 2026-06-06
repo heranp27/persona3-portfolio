@@ -2,23 +2,81 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ITEMS = [
-  { id: "i", badge: "I", title: "EDUCATION", subtitle: "University / Coursework", rank: 3 },
-  { id: "ii", badge: "II", title: "SKILLS", subtitle: "Frontend / Design / UI", rank: 4 },
-  { id: "iii", badge: "III", title: "PROJECTS", subtitle: "Featured Work", rank: 5 },
-  { id: "iv", badge: "IV", title: "EXPERIENCE", subtitle: "Internships / Roles", rank: 2 },
+  { id: "education", badge: "I", title: "EDUCATION", subtitle: "UT Austin / AI / Aerospace", rank: 5 },
+  { id: "skills", badge: "II", title: "SKILLS", subtitle: "Software / ML / Systems", rank: 4 },
+  { id: "projects", badge: "III", title: "PROJECTS", subtitle: "NASA / ML / Research", rank: 5 },
+  { id: "experience", badge: "IV", title: "EXPERIENCE", subtitle: "Lockheed / ML / SpaceX", rank: 5 },
 ];
 
-const EDUCATION_ROWS = [
-  { index: "01", title: "General Education", status: "Complete" },
-  { index: "02", title: "Computer Science Core", status: "In Progress" },
-  { index: "03", title: "Elective Track", status: "Queued" },
-  { index: "04", title: "Capstone Prep", status: "Pending" },
-];
+const DETAILS = {
+  education: {
+    title: "EDUCATION LOG",
+    progress: "2026",
+    rows: [
+      { index: "01", title: "MS Computer and Data Science - Artificial Intelligence, UT Austin", status: "MAY 2026" },
+      { index: "02", title: "BS Aerospace Engineering + Computational Engineering Certificate, UT Austin", status: "MAY 2023" },
+      { index: "03", title: "NVIDIA DLI: Deep Learning, Accelerated Data Science, LLM Customization", status: "CERT" },
+      { index: "04", title: "GPA: 3.67 MS / 3.41 BS", status: "TRACK" },
+    ],
+    bullets: [
+      "Graduate work centers on artificial intelligence, data science, and production-ready modeling.",
+      "Aerospace background adds physics, simulation, and systems engineering discipline.",
+      "NVIDIA coursework adds practical deep learning and predictive maintenance tooling.",
+    ],
+  },
+  skills: {
+    title: "SKILL GRID",
+    progress: "STACK",
+    rows: [
+      { index: "01", title: "Python, C++, Java, Matlab", status: "CODE" },
+      { index: "02", title: "Docker, Git, GitHub, GitLab, Bitbucket, Linux, AWS", status: "TOOLS" },
+      { index: "03", title: "Jupyter, machine learning pipelines, ensemble models, neural networks", status: "ML" },
+      { index: "04", title: "Cameo, Rhapsody, DOORS, Simulink, SolidWorks, Visio", status: "SYS" },
+    ],
+    bullets: [
+      "Comfortable moving between software implementation, requirements, modeling, and documentation.",
+      "Experienced with Agile/Scrum workflows and Atlassian tools including JIRA and Confluence.",
+      "Strongest overlap: AI-enabled engineering systems and mission-focused software.",
+    ],
+  },
+  projects: {
+    title: "PROJECT LIST",
+    progress: "TOP",
+    rows: [
+      { index: "01", title: "Predicting Bike-Sharing Demand with ML and Weather Data", status: "2025" },
+      { index: "02", title: "NASA MITTIC: NASA ZONE commercialization concept", status: "7TH" },
+      { index: "03", title: "Blended-Wing Body aircraft research with SpaceX mentorship", status: "BWB" },
+      { index: "04", title: "ML model research and deployment support at Quaternion Studios", status: "R&D" },
+    ],
+    bullets: [
+      "Bike-share pipeline forecasts station-level demand with temporal, weather, lag, ensemble, and neural-network features.",
+      "NASA MITTIC team represented UT Austin and placed 7th nationally.",
+      "Independent aerospace study targeted an 8%-15% reduction in commercial-aircraft carbon emissions.",
+    ],
+  },
+  experience: {
+    title: "BATTLE RECORD",
+    progress: "NOW",
+    rows: [
+      { index: "01", title: "Lockheed Martin - Software Engineer II, Huntsville, AL", status: "NOW" },
+      { index: "02", title: "Lockheed Martin - Systems Engineer II, Fort Worth, TX", status: "2023" },
+      { index: "03", title: "Quaternion Studios - Machine Learning Research Intern", status: "2023" },
+      { index: "04", title: "SpaceX - Independent Study and Mentorship Program", status: "2020" },
+    ],
+    bullets: [
+      "Current role covers software design, development, documentation, testing, debugging, and mission-problem solutions.",
+      "Systems role included MBSE co-lead duties, mission planning, ground security, requirements, and Agile software development.",
+      "ML internship focused on transforming business needs into technical models and improving performance through fine-tuning.",
+    ],
+  },
+};
 
-export default function ResumePage({ src }) {
+export default function ResumePage({ src, initialActive = 1 }) {
   const navigate = useNavigate();
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(initialActive);
   const [mounted, setMounted] = useState(false);
+  const activeItem = ITEMS[active];
+  const activeDetail = DETAILS[activeItem.id];
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 80);
@@ -244,12 +302,12 @@ export default function ResumePage({ src }) {
 
         .resume-detail-panel {
           position: absolute;
-          top: 9.5vh;
-          right: 4.5vw;
-          width: min(39vw, 620px);
-          min-height: 74vh;
+          top: 7vh;
+          right: 2.8vw;
+          width: min(43vw, 660px);
+          max-height: 88vh;
           z-index: 12;
-          padding: 22px 24px 24px 24px;
+          padding: 18px 22px 20px 22px;
           background: linear-gradient(180deg, rgba(15, 28, 105, 0.96) 0%, rgba(8, 16, 68, 0.97) 100%);
           clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
           box-shadow:
@@ -272,7 +330,7 @@ export default function ResumePage({ src }) {
           grid-template-columns: 70px 1fr auto;
           align-items: center;
           gap: 14px;
-          min-height: 92px;
+          min-height: 76px;
           padding: 0 18px;
           background: linear-gradient(90deg, #8ef5ff 0%, #d3fdff 100%);
           clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
@@ -281,18 +339,18 @@ export default function ResumePage({ src }) {
         }
         .resume-detail-top-index {
           font-family: 'Anton', sans-serif;
-          font-size: 46px;
+          font-size: 42px;
           line-height: 1;
         }
         .resume-detail-top-title {
           font-family: 'Anton', sans-serif;
-          font-size: 42px;
+          font-size: 36px;
           line-height: 0.92;
           letter-spacing: 1px;
         }
         .resume-detail-top-progress {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 42px;
+          font-size: 36px;
           letter-spacing: 2px;
           line-height: 1;
         }
@@ -300,16 +358,16 @@ export default function ResumePage({ src }) {
           position: relative;
           display: flex;
           flex-direction: column;
-          gap: 10px;
-          margin-top: 18px;
+          gap: 8px;
+          margin-top: 14px;
         }
         .resume-detail-row {
           display: grid;
-          grid-template-columns: 50px 1fr auto;
+          grid-template-columns: 50px minmax(0, 1fr) 72px;
           align-items: center;
-          gap: 14px;
-          min-height: 56px;
-          padding: 0 14px;
+          gap: 12px;
+          min-height: 58px;
+          padding: 7px 14px;
           background: rgba(8, 18, 72, 0.96);
           clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
           box-shadow: inset 0 0 0 1px rgba(140, 239, 255, 0.12);
@@ -327,9 +385,10 @@ export default function ResumePage({ src }) {
         }
         .resume-detail-row-title {
           font-family: 'Anton', sans-serif;
-          font-size: 28px;
-          line-height: 1;
+          font-size: 18px;
+          line-height: 1.08;
           color: #f2fcff;
+          min-width: 0;
         }
         .resume-detail-status {
           font-family: 'Bebas Neue', sans-serif;
@@ -340,32 +399,122 @@ export default function ResumePage({ src }) {
           background: #8df6ff;
           padding: 7px 12px;
           clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+          justify-self: end;
+          text-align: center;
         }
         .resume-detail-bottom {
           position: relative;
-          margin-top: 22px;
-          padding: 18px;
+          margin-top: 14px;
+          padding: 14px;
           background: rgba(5, 13, 57, 0.97);
           clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
           box-shadow: inset 0 0 0 1px rgba(145, 239, 255, 0.12);
         }
         .resume-detail-bottom-title {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 30px;
+          font-size: 28px;
           letter-spacing: 2px;
           color: #91f5ff;
-          margin-bottom: 14px;
+          margin-bottom: 10px;
         }
         .resume-detail-bullets {
           display: flex;
           flex-direction: column;
-          gap: 10px;
+          gap: 8px;
         }
         .resume-detail-bullet {
           font-family: 'Anton', sans-serif;
-          font-size: 21px;
+          font-size: 16px;
           line-height: 1.15;
           color: #edfaff;
+        }
+
+        @media (max-width: 700px) {
+          .resume-stack {
+            top: 3vh;
+            left: 3vw;
+            width: 720px;
+            transform: scale(0.52);
+          }
+
+          .resume-list-tag {
+            font-size: 76px;
+            margin-bottom: 4px;
+          }
+
+          .resume-detail-panel {
+            top: 42vh;
+            left: 4vw;
+            right: auto;
+            width: 92vw;
+            max-height: 55vh;
+            padding: 10px 12px 12px 12px;
+            box-shadow: inset 0 0 0 1px rgba(133, 244, 255, 0.16);
+          }
+
+          .resume-detail-top {
+            grid-template-columns: 44px minmax(0, 1fr) auto;
+            min-height: 52px;
+            gap: 8px;
+            padding: 0 10px;
+          }
+
+          .resume-detail-top-index {
+            font-size: 30px;
+          }
+
+          .resume-detail-top-title {
+            font-size: 24px;
+          }
+
+          .resume-detail-top-progress {
+            font-size: 24px;
+          }
+
+          .resume-detail-list {
+            gap: 6px;
+            margin-top: 9px;
+          }
+
+          .resume-detail-row {
+            grid-template-columns: 32px minmax(0, 1fr) 46px;
+            min-height: 42px;
+            gap: 7px;
+            padding: 5px 8px;
+          }
+
+          .resume-detail-row-index {
+            font-size: 18px;
+          }
+
+          .resume-detail-row-title {
+            font-size: 12px;
+            line-height: 1.08;
+          }
+
+          .resume-detail-status {
+            font-size: 14px;
+            padding: 5px 7px;
+          }
+
+          .resume-detail-bottom {
+            margin-top: 8px;
+            padding: 9px;
+          }
+
+          .resume-detail-bottom-title {
+            font-size: 20px;
+            margin-bottom: 6px;
+          }
+
+          .resume-detail-bullets {
+            gap: 5px;
+          }
+
+          .resume-detail-bullet {
+            font-size: 10px;
+            line-height: 1.14;
+          }
         }
 
       `}</style>
@@ -404,34 +553,32 @@ export default function ResumePage({ src }) {
           ))}
         </div>
 
-        {active === 0 && (
-          <div className="resume-detail-panel">
-            <div className="resume-detail-top">
-              <div className="resume-detail-top-index">01</div>
-              <div className="resume-detail-top-title">EDUCATION LOG</div>
-              <div className="resume-detail-top-progress">7/5</div>
-            </div>
+        <div className="resume-detail-panel">
+          <div className="resume-detail-top">
+            <div className="resume-detail-top-index">{String(active + 1).padStart(2, "0")}</div>
+            <div className="resume-detail-top-title">{activeDetail.title}</div>
+            <div className="resume-detail-top-progress">{activeDetail.progress}</div>
+          </div>
 
-            <div className="resume-detail-list">
-              {EDUCATION_ROWS.map((row) => (
-                <div className="resume-detail-row" key={row.index}>
-                  <div className="resume-detail-row-index">{row.index}</div>
-                  <div className="resume-detail-row-title">{row.title}</div>
-                  <div className="resume-detail-status">{row.status}</div>
-                </div>
+          <div className="resume-detail-list">
+            {activeDetail.rows.map((row) => (
+              <div className="resume-detail-row" key={row.index}>
+                <div className="resume-detail-row-index">{row.index}</div>
+                <div className="resume-detail-row-title">{row.title}</div>
+                <div className="resume-detail-status">{row.status}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="resume-detail-bottom">
+            <div className="resume-detail-bottom-title">DETAILS</div>
+            <div className="resume-detail-bullets">
+              {activeDetail.bullets.map((bullet) => (
+                <div className="resume-detail-bullet" key={bullet}>- {bullet}</div>
               ))}
             </div>
-
-            <div className="resume-detail-bottom">
-              <div className="resume-detail-bottom-title">DETAILS</div>
-              <div className="resume-detail-bullets">
-                <div className="resume-detail-bullet">- Maintain progress across required classes and supporting work.</div>
-                <div className="resume-detail-bullet">- Track portfolio-ready projects tied to coursework and labs.</div>
-                <div className="resume-detail-bullet">- Keep materials prepared for internships, research, and review.</div>
-              </div>
-            </div>
           </div>
-        )}
+        </div>
 
       </div>
     </div>

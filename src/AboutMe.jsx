@@ -16,24 +16,28 @@ const MAIN_IMAGES = [mainm, mainm2, mainf];
 
 const REVEAL_CONTENT = [
   {
-    upper: ["name moneybagg", "age:23"],
-    lower: "major: computer science",
+    upper: [
+      "Heran J. Patel",
+      "Software Engineer II at Lockheed Martin",
+      "UT Austin Aerospace Engineering BS + AI-focused MS",
+    ],
+    lower: "I build mission software, ML systems, and engineering tools with a systems-first mindset.",
   },
   {
     upper: [
-      "Cleopatra lived closer to the Moon landing than to the building of the pyramids.",
-      "Vikings kept cats on ships for pest control (and vibes).",
-      "In medieval Europe, animals could be put on trial for crimes",
+      "Aerospace engineering foundation with computational engineering training.",
+      "Graduate focus in computer and data science for artificial intelligence.",
+      "NVIDIA DLI certificates across deep learning, accelerated data science, LLM customization, and predictive maintenance.",
     ],
-    lower: "abbove is some history fun fact",
+    lower: "I like problems where physics, data, and deployable software meet.",
   },
   {
     upper: [
-      "Oxford University founding is older than the Aztec Empire.",
-      "The shortest war in history lasted 38–45 minutes (Britain vs Zanzibar).",
-      "Humans have been writing for ~5,000 years",
+      "MBSE co-lead experience across mission planning, ground security, and requirements.",
+      "Machine learning research from model inception through deployment.",
+      "NASA MITTIC national finalist with a commercialization concept for NASA ZONE.",
     ],
-    lower: "yes it's a place holder",
+    lower: "Current direction: trustworthy AI, production ML, and aerospace-grade software.",
   },
 ];
 
@@ -45,27 +49,27 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "twitch", label: "ABOUT ME", handle: "@yourname", href: "https://twitch.tv/yourname", icon: "🎮", barIcon: icon1, bars: 1, newBars: [0], counts: ["56"],
-    links: ["twitch.tv/videos/2041837265"],
+    id: "profile", label: "PROFILE", handle: "Heran Patel", href: "mailto:heranpatel@utexas.edu", icon: "HP", barIcon: icon1, bars: 1, newBars: [0], counts: ["2026"],
+    links: ["software engineer / ai graduate"],
     stats: [
-      { tag: "FOL", value: "1.2K", color: "#9147ff" },
-      { tag: "VWR", value: "042",  color: "#bf94ff" },
+      { tag: "EXP", value: "3Y", color: "#9147ff" },
+      { tag: "MS", value: "AI", color: "#bf94ff" },
     ],
   },
   {
-    id: "instagram", label: "FUN FACT ABOUT ME", handle: "@yourhandle", href: "https://instagram.com/yourhandle", icon: "📷", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["3.4M", "2.5M", "676K", "412K", "198K"],
-    links: ["instagram.com/p/C4xQmRrNk2a", "instagram.com/p/C3wLpBsOj7f", "instagram.com/reel/C2vKoArMi6e", "instagram.com/p/C1uJnZqLh5d", "instagram.com/reel/C0tImYpKg4c"],
+    id: "focus", label: "ENGINEERING STYLE", handle: "systems + software", href: "mailto:heranpatel@utexas.edu", icon: "AI", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["MBSE", "ML", "AWS", "C++", "PY"],
+    links: ["mission software", "model based systems", "machine learning", "cloud tooling", "requirements"],
     stats: [
-      { tag: "FOL", value: "3.4K", color: "#e1306c" },
-      { tag: "PST", value: "128",  color: "#f77737" },
+      { tag: "SYS", value: "II", color: "#e1306c" },
+      { tag: "SWE", value: "II", color: "#f77737" },
     ],
   },
   {
-    id: "tiktok", label: "WIRED FACT ABOUT ME", handle: "@yourhandle", href: "https://tiktok.com/@yourhandle", icon: "🎵", barIcon: icon3, bars: 7, newBars: [0, 3, 5, 6], counts: ["5.1M", "3.7M", "2.2M", "1.4M", "831K", "490K", "217K"],
-    links: ["tiktok.com/@yourhandle/video/7318492016374859054", "tiktok.com/@yourhandle/video/7305837261940183342", "tiktok.com/@yourhandle/video/7291046385720348974", "tiktok.com/@yourhandle/video/7278392047163820334", "tiktok.com/@yourhandle/video/7264819203847165742", "tiktok.com/@yourhandle/video/7251047382916430126", "tiktok.com/@yourhandle/video/7237294018463851822"],
+    id: "trajectory", label: "CURRENT QUEST", handle: "portfolio-ready work", href: "/Heran_Patel_Resume_2026.pdf", icon: "ML", barIcon: icon3, bars: 4, newBars: [0, 3], counts: ["UT", "LM", "NASA", "PAPER"],
+    links: ["ai graduate program", "lockheed martin software", "nasa mittic finalist", "bike demand ml paper"],
     stats: [
-      { tag: "FOL", value: "8.9K", color: "#00f2ea" },
-      { tag: "LKS", value: "52K",  color: "#ff0050" },
+      { tag: "GPA", value: "3.67", color: "#00f2ea" },
+      { tag: "BS", value: "AE", color: "#ff0050" },
     ],
   },
 ];

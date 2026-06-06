@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
-import bgVideo from "./assets/main3.mp4";
+import bgVideo from "./assets/main1.mp4";
 import newsign from "./assets/newsign.png";
 import icon1 from "./assets/icon1.png";
 import icon2 from "./assets/icon2.png";
@@ -19,27 +19,30 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "twitch", label: "TWITCH", handle: "@yourname", href: "https://twitch.tv/yourname", icon: "🎮", barIcon: icon1, bars: 1, newBars: [0], counts: ["56"],
-    links: ["twitch.tv/videos/2041837265"],
+    id: "email", label: "EMAIL", handle: "heranpatel@utexas.edu", href: "mailto:heranpatel@utexas.edu", icon: "@", barIcon: icon1, bars: 1, newBars: [0],
+    links: [{ label: "heranpatel@utexas.edu", kind: "MAIL", value: "OPEN", href: "mailto:heranpatel@utexas.edu" }],
     stats: [
-      { tag: "FOL", value: "1.2K", color: "#9147ff" },
-      { tag: "VWR", value: "042",  color: "#bf94ff" },
+      { tag: "MSG", value: "01", color: "#9147ff" },
+      { tag: "UT", value: "TX", color: "#bf94ff" },
     ],
   },
   {
-    id: "instagram", label: "INSTAGRAM", handle: "@yourhandle", href: "https://instagram.com/yourhandle", icon: "📷", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["3.4M", "2.5M", "676K", "412K", "198K"],
-    links: ["instagram.com/p/C4xQmRrNk2a", "instagram.com/p/C3wLpBsOj7f", "instagram.com/reel/C2vKoArMi6e", "instagram.com/p/C1uJnZqLh5d", "instagram.com/reel/C0tImYpKg4c"],
+    id: "profiles", label: "PROFILES", handle: "professional links", href: "https://www.linkedin.com/search/results/all/?keywords=Heran%20Patel", icon: "IN", barIcon: icon2, bars: 2, newBars: [0],
+    links: [
+      { label: "linkedin / heran patel", kind: "LINK", value: "VIEW", href: "https://www.linkedin.com/search/results/all/?keywords=Heran%20Patel" },
+      { label: "github / heranpatel", kind: "CODE", value: "VIEW", href: "https://github.com/heranpatel" },
+    ],
     stats: [
-      { tag: "FOL", value: "3.4K", color: "#e1306c" },
-      { tag: "PST", value: "128",  color: "#f77737" },
+      { tag: "NET", value: "02", color: "#e1306c" },
+      { tag: "DEV", value: "GH", color: "#f77737" },
     ],
   },
   {
-    id: "tiktok", label: "TIKTOK", handle: "@yourhandle", href: "https://tiktok.com/@yourhandle", icon: "🎵", barIcon: icon3, bars: 7, newBars: [0, 3, 5, 6], counts: ["5.1M", "3.7M", "2.2M", "1.4M", "831K", "490K", "217K"],
-    links: ["tiktok.com/@yourhandle/video/7318492016374859054", "tiktok.com/@yourhandle/video/7305837261940183342", "tiktok.com/@yourhandle/video/7291046385720348974", "tiktok.com/@yourhandle/video/7278392047163820334", "tiktok.com/@yourhandle/video/7264819203847165742", "tiktok.com/@yourhandle/video/7251047382916430126", "tiktok.com/@yourhandle/video/7237294018463851822"],
+    id: "resume", label: "RESUME PDF", handle: "download", href: "/Heran_Patel_Resume_2026.pdf", icon: "CV", barIcon: icon3, bars: 1, newBars: [0],
+    links: [{ label: "Heran_Patel_Resume_2026.pdf", kind: "PDF", value: "OPEN", href: "/Heran_Patel_Resume_2026.pdf" }],
     stats: [
-      { tag: "FOL", value: "8.9K", color: "#00f2ea" },
-      { tag: "LKS", value: "52K",  color: "#ff0050" },
+      { tag: "CV", value: "26", color: "#00f2ea" },
+      { tag: "PDF", value: "01", color: "#ff0050" },
     ],
   },
 ];
@@ -68,13 +71,13 @@ export default function Socials() {
         if (e.key === "ArrowUp")   setActiveInfoBar(i => Math.max(0, i - 1));
         if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(barCount - 1, i + 1));
         if (e.key === "ArrowLeft") setFocus("left");
-        if (e.key === "Enter")     window.open("https://" + ITEMS[active].links[activeInfoBar], "_blank");
+        if (e.key === "Enter")     window.open(ITEMS[active].links[activeInfoBar].href, "_blank");
       }
       if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, navigate, focus]);
+  }, [active, activeInfoBar, navigate, focus]);
 
   return (
     <div id="menu-screen">
@@ -583,9 +586,9 @@ export default function Socials() {
           )}
           <div className="sc-info-bar">
             <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-            <span className="sc-info-bar-text">{ITEMS[active].links[i].slice(0, 10)}...</span>
-            <span className="sc-info-bar-box">VIEWS</span>
-            <span className="sc-info-bar-count">{ITEMS[active].counts[i]}</span>
+            <span className="sc-info-bar-text">{ITEMS[active].links[i].label}</span>
+            <span className="sc-info-bar-box">{ITEMS[active].links[i].kind}</span>
+            <span className="sc-info-bar-count">{ITEMS[active].links[i].value}</span>
           </div>
         </div>
       ))}
