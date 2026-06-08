@@ -4,40 +4,21 @@ import char1 from "./assets/char1.png";
 import char2 from "./assets/char2.png";
 import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
-import mainm from "./assets/mainm.jpeg";
-import mainm2 from "./assets/mainm2.jpeg";
-import mainf from "./assets/mainf.jpeg";
 
 const CHARS = [char1, char2, char3];
-const MAIN_IMAGES = [mainm, mainm2, mainf];
 
 const REVEAL_CONTENT = [
   {
-    upper: [
-      "Heran J. Patel",
-      "Software Engineer II at Lockheed Martin",
-      "UT Austin Aerospace Engineering BS + AI-focused MS",
-    ],
-    lower: "I build mission software, ML systems, and engineering tools with a systems-first mindset.",
+    title: "About This Website",
+    body: "This website is based on the home screen of the video game Persona 3. Truth be told I’ve barely played this game, so this could be larp. But I am a big fan of the sound track and Persona 5, which I have played. I decided to make this website Persona 3 and not 5 themed simply because it was easier. It was easier because I had help from the wonderful Blair Jade (GH: blairxu13). She is a software developer as well and she already had the foundation and assets laid out to create this portfolio. I am working on my own Persona 5 themed portfolio, but that will take some time, so in the mean time this is a placeholder portfolio.",
   },
   {
-    upper: [
-      "Aerospace engineering foundation with computational engineering training.",
-      "Graduate focus in computer and data science for artificial intelligence.",
-      "NVIDIA DLI certificates across deep learning, accelerated data science, LLM customization, and predictive maintenance.",
-    ],
-    lower: "I like problems where physics, data, and deployable software meet.",
+    title: "Hobbies",
+    body: "TODO",
   },
   {
-    upper: [
-      "MBSE co-lead experience across mission planning, ground security, and requirements.",
-      "Machine learning research from model inception through deployment.",
-      "NASA MITTIC national finalist with a commercialization concept for NASA ZONE.",
-    ],
-    lower: "Current direction: trustworthy AI, production ML, and aerospace-grade software.",
+    title: "Goals",
+    body: "TODO",
   },
 ];
 
@@ -49,27 +30,118 @@ const ROLES = [
 
 const ITEMS = [
   {
-    id: "profile", label: "PROFILE", handle: "Heran Patel", href: "mailto:heranpatel@utexas.edu", icon: "HP", barIcon: icon1, bars: 1, newBars: [0], counts: ["2026"],
-    links: ["software engineer / ai graduate"],
+    id: "website", label: "ABOUT THIS WEBSITE",
     stats: [
       { tag: "EXP", value: "3Y", color: "#9147ff" },
       { tag: "MS", value: "AI", color: "#bf94ff" },
     ],
   },
   {
-    id: "focus", label: "ENGINEERING STYLE", handle: "systems + software", href: "mailto:heranpatel@utexas.edu", icon: "AI", barIcon: icon2, bars: 5, newBars: [1, 2], counts: ["MBSE", "ML", "AWS", "C++", "PY"],
-    links: ["mission software", "model based systems", "machine learning", "cloud tooling", "requirements"],
+    id: "hobbies", label: "HOBBIES",
     stats: [
       { tag: "SYS", value: "II", color: "#e1306c" },
       { tag: "SWE", value: "II", color: "#f77737" },
     ],
   },
   {
-    id: "trajectory", label: "CURRENT QUEST", handle: "portfolio-ready work", href: "/Heran_Patel_Resume_2026.pdf", icon: "ML", barIcon: icon3, bars: 4, newBars: [0, 3], counts: ["UT", "LM", "NASA", "PAPER"],
-    links: ["ai graduate program", "lockheed martin software", "nasa mittic finalist", "bike demand ml paper"],
+    id: "goals", label: "GOALS",
     stats: [
       { tag: "GPA", value: "3.67", color: "#00f2ea" },
       { tag: "BS", value: "AE", color: "#ff0050" },
+    ],
+  },
+];
+
+const HOBBIES = [
+  {
+    id: "video-games",
+    label: "Video Games",
+    body: [
+      "I play a wide range of video games. But currently I am fixed on Valorant and my goal is to reach Diamond by EOY.",
+      "I was on the UT Austin Esports team during undergrad. I was on both the 2k and Madden team and the captain of the 2k team.",
+      "My top 3 games of all time are: 1. Assassins Creed: Black Flag 2. Titanfall 3. For Honor",
+    ],
+  },
+  {
+    id: "board-games",
+    label: "Board Games",
+    body: [
+      "I love to play board/card games too, my favorite are Secret Hitler and Unstable Unicorns.",
+    ],
+  },
+  {
+    id: "sports",
+    label: "Sports",
+    body: [
+      "I am a huge Dallas Mavericks and Cowboys fan (perpetual pain).",
+      "I enjoy playing basketball recreationally.",
+    ],
+  },
+  {
+    id: "breweries",
+    label: "Breweries",
+    body: [
+      "I enjoy going to breweries for games or to just try out new flavors.",
+    ],
+  },
+  {
+    id: "anime",
+    label: "Anime",
+    body: [
+      "Too much to talk about here, I am a weeb who’s been watching since elementary school. Even took a class on it during undergrad. Big part of my life. I am currently making an anime ranking website on the side, because I do not like MAL’s UI.",
+      "My Top 3 (depends on the day your asking): 1. One Piece 2. SNAFU 3. Re: Zero",
+    ],
+  },
+  {
+    id: "website-design",
+    label: "Website Design",
+    body: [
+      "It started when I joined a club called Business Professionals of America in High School. Through this club, I entered with 3 other friends the BPA Website Design competition. Long story short we placed 1st in Texas and 7th nationally, in a competition pool of 10,000+ people.",
+      "This honestly was the most fun period of my life during high school. So after I got inspired to continue website designing on the side. Through some connections I was able to build a few websites for some local business, I did this side hustle up until college started.",
+      "I’ve started this hobby again as it’s much easier with generative AI, but not for money just for fun. As I said before I am working on a Persona 5 themed portfolio and along with that a mini Sonic game/portfolio.",
+    ],
+  },
+  {
+    id: "weight-lifting",
+    label: "Weight Lifting",
+    body: [
+      "Nothing much to say here except I go to the gym after work and pump weights. Not trying to be Mr. Olympia or anything, but just stay fit enough to justify my caloric intake.",
+    ],
+  },
+  {
+    id: "new-tools",
+    label: "Exploring New Tools",
+    body: [
+      "With the boom in AI there have been an insane amount of new tools to come out that are free and accessible. I either find new tools from friends or get it recommended to me in some manner.",
+      "So in my free time and on projects I’ll try to use new tools to see if they can benefit me in any way for current or future work.",
+    ],
+  },
+];
+
+const GOALS = [
+  {
+    title: "2026",
+    items: [
+      "learn Japanese",
+      "Be able to do 75 pushups",
+      "Bench 225",
+      "Cut 20 lbs by eoy",
+      "Cook more",
+      "Drink 128 oz of water a day",
+      "Take vitamin supplements",
+      "Brush twice a day",
+      "Read manga",
+      "Read a book",
+    ],
+  },
+  {
+    title: "Long term",
+    items: [
+      "Run a marathon",
+      "Open a bakery",
+      "Be a Dallas mavericks Season ticket holder",
+      "Kbbq grill/table",
+      "Kotatsu",
     ],
   },
 ];
@@ -78,6 +150,7 @@ export default function AboutMe() {
   const [active, setActive]   = useState(0);
   const [mounted, setMounted] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [activeHobby, setActiveHobby] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -92,45 +165,67 @@ export default function AboutMe() {
       if (e.key === "Enter") setRevealed(true);
       if (e.key === "ArrowRight") setRevealed(true);
       if (e.key === "ArrowLeft") {
-        if (revealed) setRevealed(false);
+        if (activeHobby) setActiveHobby(null);
+        else if (revealed) setRevealed(false);
         else navigate(-1);
       }
       if (e.key === "Escape" || e.key === "Backspace") navigate(-1);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, navigate, revealed]);
+  }, [active, activeHobby, navigate, revealed]);
 
   return (
     <div id="menu-screen">
       <video src={bgVideo} autoPlay loop muted playsInline />
       {revealed && <div key={`dim-${active}`} className="sc-dim" />}
       {revealed && (
-        <div key={`panel-${active}`} className={`sc-reveal-panel${mounted ? " mounted" : ""}`}>
-          <div className="sc-reveal-upper-bar">
-            {REVEAL_CONTENT[active].upper.map((line) => (
-              <div className="sc-reveal-upper-line" key={line}>{line}</div>
-            ))}
+        <div key={`panel-${active}`} className={`about-detail-panel${mounted ? " mounted" : ""}`}>
+          <div className="about-detail-top">
+            <div className="about-detail-index">{String(active + 1).padStart(2, "0")}</div>
+            <div className="about-detail-title">
+              {activeHobby ? HOBBIES.find((hobby) => hobby.id === activeHobby)?.label : REVEAL_CONTENT[active].title}
+            </div>
           </div>
-          <div className="sc-reveal-lower-bar">{REVEAL_CONTENT[active].lower}</div>
-        </div>
-      )}
-      {revealed && (
-        <div key={`nav-${active}`} className="sc-right-nav">
-          <span className="sc-nav-arrow left">◄</span>
-          <span className="sc-nav-btn">LB</span>
-          <span className="sc-nav-dot" />
-          <span className="sc-nav-btn">RB</span>
-          <span className="sc-nav-arrow right">►</span>
-        </div>
-      )}
-      {revealed && (
-        <div key={`portrait-${active}`} className={`sc-main-portrait-shell${mounted ? " mounted" : ""}`}>
-          <img
-            className="sc-main-portrait"
-            src={MAIN_IMAGES[active]}
-            alt=""
-          />
+          {active === 1 && !activeHobby ? (
+            <div className="hobby-grid">
+              {HOBBIES.map((hobby) => (
+                <button className="hobby-button" type="button" key={hobby.id} onClick={() => setActiveHobby(hobby.id)}>
+                  {hobby.label}
+                </button>
+              ))}
+            </div>
+          ) : activeHobby ? (
+            <div className="about-detail-copy hobby-copy">
+              {HOBBIES.find((hobby) => hobby.id === activeHobby)?.body.map((line) => (
+                <p className="hobby-copy-line" key={line}>{line}</p>
+              ))}
+              <button className="hobby-back" type="button" onClick={() => setActiveHobby(null)}>
+                &lt; Back to Hobbies
+              </button>
+            </div>
+          ) : active === 2 ? (
+            <div className="about-detail-copy goals-copy">
+              {GOALS.map((section) => (
+                <section className="goal-column" key={section.title}>
+                  <h3 className="goal-heading">{section.title}</h3>
+                  <ul className="goal-list">
+                    {section.items.map((item) => (
+                      <li className="goal-item" key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              ))}
+            </div>
+          ) : Array.isArray(REVEAL_CONTENT[active].body) ? (
+            <div className="about-detail-copy">
+              {REVEAL_CONTENT[active].body.map((line) => (
+                <p className="about-copy-line" key={line}>{line}</p>
+              ))}
+            </div>
+          ) : (
+            <div className="about-detail-copy">{REVEAL_CONTENT[active].body}</div>
+          )}
         </div>
       )}
       <style>{`
@@ -139,7 +234,7 @@ export default function AboutMe() {
         .sc-root {
           position: absolute;
           inset: 0;
-          z-index: 6;
+          z-index: 14;
           pointer-events: none;
           display: flex;
           flex-direction: column;
@@ -152,7 +247,7 @@ export default function AboutMe() {
         .sc-dim {
           position: absolute;
           inset: 0;
-          z-index: 12;
+          z-index: 5;
           background: rgba(40, 45, 54, 0.68);
           pointer-events: none;
           animation: sc-dim-in 0.32s ease-out;
@@ -165,6 +260,158 @@ export default function AboutMe() {
           to {
             opacity: 1;
           }
+        }
+
+        .about-detail-panel {
+          position: absolute;
+          top: 15vh;
+          right: 5vw;
+          width: min(46vw, 680px);
+          z-index: 13;
+          padding: 20px 24px 24px;
+          background: linear-gradient(180deg, rgba(15, 28, 105, 0.96) 0%, rgba(8, 16, 68, 0.98) 100%);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+          box-shadow:
+            inset 0 0 0 1px rgba(133, 244, 255, 0.16),
+            16px 16px 0 rgba(0, 6, 30, 0.55);
+          max-height: 78vh;
+          overflow-y: auto;
+          opacity: 0;
+          transform: translateX(32px);
+          transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+          pointer-events: all;
+        }
+        .about-detail-panel.mounted {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        .about-detail-top {
+          display: grid;
+          grid-template-columns: 70px minmax(0, 1fr);
+          align-items: center;
+          gap: 14px;
+          min-height: 84px;
+          padding: 0 18px;
+          background: linear-gradient(90deg, #8ef5ff 0%, #d3fdff 100%);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+          color: #08153f;
+          box-shadow: 10px 0 0 rgba(255, 94, 136, 0.88);
+        }
+        .about-detail-index {
+          font-family: 'Anton', sans-serif;
+          font-size: 42px;
+          line-height: 1;
+        }
+        .about-detail-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 40px;
+          line-height: 0.92;
+          letter-spacing: 1px;
+        }
+        .about-detail-copy {
+          margin-top: 18px;
+          min-height: 180px;
+          padding: 22px;
+          background: rgba(5, 13, 57, 0.97);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(145, 239, 255, 0.12);
+          font-family: 'Anton', sans-serif;
+          font-size: 32px;
+          line-height: 1.15;
+          color: #edfaff;
+        }
+        .about-copy-line {
+          margin: 0;
+          font-size: 24px;
+          line-height: 1.12;
+        }
+        .about-copy-line + .about-copy-line {
+          margin-top: 7px;
+        }
+        .goals-copy {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 18px;
+          min-height: 0;
+          font-size: 18px;
+        }
+        .goal-column {
+          min-width: 0;
+          padding-right: 8px;
+        }
+        .goal-heading {
+          margin: 0 0 10px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 28px;
+          letter-spacing: 2px;
+          line-height: 1;
+          color: #8ef5ff;
+        }
+        .goal-list {
+          display: grid;
+          gap: 6px;
+          margin: 0;
+          padding: 0;
+          list-style: none;
+        }
+        .goal-item {
+          position: relative;
+          padding-left: 16px;
+          font-size: 18px;
+          line-height: 1.12;
+          overflow-wrap: anywhere;
+        }
+        .goal-item::before {
+          content: "-";
+          position: absolute;
+          left: 0;
+          color: #8ef5ff;
+        }
+        .hobby-grid {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+          margin-top: 18px;
+        }
+        .hobby-button {
+          min-height: 58px;
+          border: 0;
+          padding: 10px 14px;
+          background: rgba(5, 13, 57, 0.97);
+          color: #edfaff;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+          box-shadow: inset 0 0 0 1px rgba(145, 239, 255, 0.12);
+          font-family: 'Anton', sans-serif;
+          font-size: 20px;
+          line-height: 1.05;
+          text-align: left;
+          cursor: pointer;
+          transition: transform 0.16s ease, background 0.16s ease;
+        }
+        .hobby-button:hover {
+          transform: translateX(4px);
+          background: rgba(12, 26, 94, 1);
+        }
+        .hobby-copy {
+          font-size: 19px;
+          min-height: 0;
+        }
+        .hobby-copy-line + .hobby-copy-line {
+          margin-top: 12px;
+        }
+        .hobby-back {
+          margin-top: 18px;
+          border: 0;
+          background: transparent;
+          color: #8df6ff;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
+          letter-spacing: 2px;
+          cursor: pointer;
+          text-align: left;
+        }
+        .hobby-back:hover {
+          color: #ffffff;
         }
 
         @keyframes sc-reveal-bar-in {
@@ -484,12 +731,16 @@ export default function AboutMe() {
           align-items: center;
           justify-content: center;
           gap: 3px;
-          padding-left: 78px;
+          padding-left: 118px;
+          padding-right: 18px;
+          min-width: 0;
         }
         .sc-main-top {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 12px;
+          width: 100%;
         }
 
         .sc-icon {
@@ -512,6 +763,9 @@ export default function AboutMe() {
           color: rgba(255,255,255,0.85);
           transition: color 0.2s ease;
           user-select: none;
+          text-align: center;
+          white-space: normal;
+          overflow-wrap: normal;
         }
         .sc-bar-outer.active .sc-label { color: #111111; }
 
@@ -613,6 +867,78 @@ export default function AboutMe() {
           border-radius: 3px;
           padding: 1px 6px; font-size: 11px;
         }
+
+        @media (max-width: 900px) {
+          .sc-root {
+            justify-content: flex-start;
+            padding-top: 9vh;
+          }
+          .sc-bar,
+          .sc-bar-red {
+            width: 72vw;
+          }
+          .about-detail-panel {
+            top: 46vh;
+            left: 4vw;
+            right: auto;
+            width: 92vw;
+            max-height: 50vh;
+            padding: 12px 14px 16px;
+          }
+          .about-detail-top {
+            grid-template-columns: 48px minmax(0, 1fr);
+            min-height: 58px;
+            gap: 10px;
+            padding: 0 12px;
+          }
+          .about-detail-index {
+            font-size: 30px;
+          }
+          .about-detail-title {
+            font-size: 28px;
+          }
+          .about-detail-copy {
+            min-height: 120px;
+            margin-top: 10px;
+            padding: 14px;
+            font-size: 22px;
+          }
+          .hobby-grid {
+            grid-template-columns: 1fr;
+            gap: 7px;
+            margin-top: 10px;
+          }
+          .hobby-button {
+            min-height: 42px;
+            font-size: 16px;
+          }
+          .hobby-copy {
+            font-size: 13px;
+          }
+          .hobby-copy-line + .hobby-copy-line {
+            margin-top: 8px;
+          }
+          .hobby-back {
+            margin-top: 12px;
+            font-size: 18px;
+          }
+          .goals-copy {
+            grid-template-columns: 1fr;
+            gap: 14px;
+            font-size: 14px;
+          }
+          .goal-heading {
+            margin-bottom: 7px;
+            font-size: 22px;
+          }
+          .goal-list {
+            gap: 4px;
+          }
+          .goal-item {
+            font-size: 14px;
+            line-height: 1.08;
+          }
+        }
       `}</style>
 
       <div className="sc-root" role="navigation">
@@ -622,6 +948,8 @@ export default function AboutMe() {
             className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
             onClick={() => {
               setActive(i);
+              setActiveHobby(null);
+              setRevealed(true);
             }}
             onMouseEnter={() => {
               setActive(i);

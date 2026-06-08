@@ -1,602 +1,228 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import char1 from "./assets/char1.png";
-import char2 from "./assets/char2.png";
-import char3 from "./assets/char3.png";
 import bgVideo from "./assets/main1.mp4";
-import newsign from "./assets/newsign.png";
-import icon1 from "./assets/icon1.png";
-import icon2 from "./assets/icon2.png";
-import icon3 from "./assets/icon3.png";
 
-const CHARS = [char1, char2, char3];
-
-const ROLES = [
-  { text: "LEADER", color: "#e8c100", bg: "rgba(232,193,0,0.12)", border: "rgba(232,193,0,0.5)" },
-  { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
-  { text: "PARTY",  color: "#4a8fff", bg: "rgba(74,143,255,0.12)", border: "rgba(74,143,255,0.5)" },
-];
-
-const ITEMS = [
+const CONTACT_ITEMS = [
   {
-    id: "email", label: "EMAIL", handle: "heranpatel@utexas.edu", href: "mailto:heranpatel@utexas.edu", icon: "@", barIcon: icon1, bars: 1, newBars: [0],
-    links: [{ label: "heranpatel@utexas.edu", kind: "MAIL", value: "OPEN", href: "mailto:heranpatel@utexas.edu" }],
-    stats: [
-      { tag: "MSG", value: "01", color: "#9147ff" },
-      { tag: "UT", value: "TX", color: "#bf94ff" },
-    ],
+    label: "Email",
+    value: "heranpatel27@gmail.com",
+    href: "mailto:heranpatel27@gmail.com",
   },
   {
-    id: "profiles", label: "PROFILES", handle: "professional links", href: "https://www.linkedin.com/search/results/all/?keywords=Heran%20Patel", icon: "IN", barIcon: icon2, bars: 2, newBars: [0],
-    links: [
-      { label: "linkedin / heran patel", kind: "LINK", value: "VIEW", href: "https://www.linkedin.com/search/results/all/?keywords=Heran%20Patel" },
-      { label: "github / heranpatel", kind: "CODE", value: "VIEW", href: "https://github.com/heranpatel" },
-    ],
-    stats: [
-      { tag: "NET", value: "02", color: "#e1306c" },
-      { tag: "DEV", value: "GH", color: "#f77737" },
-    ],
+    label: "LinkedIn",
+    value: "linkedin.com/in/heran-patel",
+    href: "https://www.linkedin.com/in/heran-patel",
   },
   {
-    id: "resume", label: "RESUME PDF", handle: "download", href: "/Heran_Patel_Resume_2026.pdf", icon: "CV", barIcon: icon3, bars: 1, newBars: [0],
-    links: [{ label: "Heran_Patel_Resume_2026.pdf", kind: "PDF", value: "OPEN", href: "/Heran_Patel_Resume_2026.pdf" }],
-    stats: [
-      { tag: "CV", value: "26", color: "#00f2ea" },
-      { tag: "PDF", value: "01", color: "#ff0050" },
-    ],
+    label: "GitHub",
+    value: "heranp27",
+    href: "https://github.com/heranp27?tab=repositories",
+  },
+  {
+    label: "Resume",
+    value: "Heran_Patel_Resume_2026.pdf",
+    href: "/Heran_Patel_Resume_2026.pdf",
   },
 ];
 
 export default function Socials() {
-  const [active, setActive]               = useState(0);
-  const [mounted, setMounted]             = useState(false);
-  const [activeInfoBar, setActiveInfoBar] = useState(0);
-  const [focus, setFocus]                 = useState("left"); // "left" | "right"
+  const [mounted, setMounted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60);
+    const t = setTimeout(() => setMounted(true), 80);
     return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
     const onKey = (e) => {
-      if (focus === "left") {
-        if (e.key === "ArrowUp")    setActive(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown")  setActive(i => Math.min(ITEMS.length - 1, i + 1));
-        if (e.key === "ArrowRight") { setFocus("right"); setActiveInfoBar(0); }
-        if (e.key === "Enter")      window.open(ITEMS[active].href, "_blank");
-      } else {
-        const barCount = ITEMS[active].bars;
-        if (e.key === "ArrowUp")   setActiveInfoBar(i => Math.max(0, i - 1));
-        if (e.key === "ArrowDown") setActiveInfoBar(i => Math.min(barCount - 1, i + 1));
-        if (e.key === "ArrowLeft") setFocus("left");
-        if (e.key === "Enter")     window.open(ITEMS[active].links[activeInfoBar].href, "_blank");
-      }
-      if ((e.key === "ArrowLeft" && focus === "left") || e.key === "Escape" || e.key === "Backspace") navigate(-1);
+      if (e.key === "Escape" || e.key === "Backspace" || e.key === "ArrowLeft") navigate(-1);
     };
+
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [active, activeInfoBar, navigate, focus]);
+  }, [navigate]);
 
   return (
     <div id="menu-screen">
       <video src={bgVideo} autoPlay loop muted playsInline />
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,700;1,700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&display=swap');
 
-        .sc-root {
+        .contact-root {
           position: absolute;
           inset: 0;
-          z-index: 10;
-          pointer-events: none;
+          z-index: 12;
           display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
           justify-content: center;
-          gap: 6px;
-          padding-left: 0;
+          padding: 8vh 7vw;
+          pointer-events: none;
         }
 
-        /* ── Each bar ── */
-        .sc-bar {
-          position: relative;
-          width: 45vw;
-          height: 64px;
-          transition: height 0.3s cubic-bezier(0.22,1,0.36,1);
-          background: #111;
-          cursor: pointer;
+        .contact-panel {
+          width: min(820px, 86vw);
+          padding: 28px 32px 34px;
+          background: linear-gradient(180deg, rgba(15, 28, 105, 0.96) 0%, rgba(8, 16, 68, 0.98) 100%);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 22px) 100%, 0 100%);
+          box-shadow:
+            inset 0 0 0 1px rgba(133, 244, 255, 0.16),
+            18px 18px 0 rgba(0, 6, 30, 0.58);
+          opacity: 0;
+          transform: translateY(24px) skewX(-3deg);
+          transition: opacity 0.42s ease, transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
           pointer-events: all;
-          clip-path: polygon(0 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
-          box-shadow: 0 6px 24px rgba(0,0,0,0.65);
-          z-index: 1;
         }
 
-        /* wrapper holds both the red underlay and the bar */
-        .sc-bar-outer {
-          position: relative;
-          flex-shrink: 0;
-          transform: translateX(-100%);
-          transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-        .sc-bar-outer.active .sc-bar     { height: 90px; }
-        .sc-bar-outer.active .sc-bar-red { height: 90px; }
-        .sc-bar-outer.mounted { transform: translateX(0); }
-        .sc-bar-outer:nth-child(1) { transition-delay: 0ms; }
-        .sc-bar-outer:nth-child(2) { transition-delay: 80ms; }
-        .sc-bar-outer:nth-child(3) { transition-delay: 160ms; }
-
-        /* red underlay — peeks out below the bar when active */
-        .sc-bar-red {
-          position: absolute;
-          top: 0; left: 0;
-          width: 45vw;
-          height: 64px;
-          background: #c4001a;
-          clip-path: polygon(50% 0, 100% 0, 100% 100%, calc(50% - 10px) 100%);
-          transform: translateY(-7px);
-          opacity: 0;
-          transition: opacity 0.2s ease;
-          z-index: 0;
-          pointer-events: none;
-        }
-        .sc-bar-outer.active .sc-bar-red { opacity: 1; }
-
-        /* white fill — skewed parallelogram on the right 25% */
-        .sc-bar-fill {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          background: #ffffff;
-          clip-path: polygon(100% 0, 100% 0, calc(100% - 32px) 100%, calc(100% - 32px) 100%);
-          transition: clip-path 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-          z-index: 0;
-        }
-        .sc-bar-outer.active .sc-bar-fill {
-          clip-path: polygon(22% 0, 100% 0, calc(100% - 14px) 100%, calc(22% + 138px) 100%);
+        .contact-panel.mounted {
+          opacity: 1;
+          transform: translateY(0) skewX(-3deg);
         }
 
-        /* shade on the left edge of the white fill */
-        .sc-bar-shade {
-          position: absolute;
-          top: 0; bottom: 0;
-          left: 73%;
-          width: 6%;
-          background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0) 100%);
-          z-index: 1;
-          pointer-events: none;
-          opacity: 0;
-          transition: opacity 0.35s ease;
-        }
-        .sc-bar-outer.active .sc-bar-shade { opacity: 1; }
-
-        /* bottom shadow line under each bar */
-        .sc-bar::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: 0; right: 0;
-          height: 6px;
-          background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
-          z-index: 10;
-          pointer-events: none;
-        }
-
-        /* content layout inside each bar */
-        .sc-bar-content {
-          position: relative;
-          z-index: 2;
-          height: 100%;
-          display: flex;
+        .contact-heading {
+          display: grid;
+          grid-template-columns: 92px 1fr;
           align-items: center;
-          justify-content: space-between;
-          padding: 0 20px 0 20px;
+          gap: 18px;
+          min-height: 92px;
+          padding: 0 22px;
+          background: linear-gradient(90deg, #8ef5ff 0%, #d3fdff 100%);
+          color: #08153f;
+          clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+          box-shadow: 12px 0 0 rgba(255, 94, 136, 0.88);
         }
 
-        /* left: role label */
-        .sc-role {
-          display: flex;
-          align-items: center;
-          flex-shrink: 0;
+        .contact-index {
           font-family: 'Anton', sans-serif;
-          font-size: 50px;
-          letter-spacing: -2px;
-          color: #ffffff;
-          transform: rotate(-30deg);
-          user-select: none;
+          font-size: 54px;
           line-height: 1;
-          padding: 0 16px 0 8px;
         }
 
-        /* left: icon + name centered in remaining space */
-        .sc-main {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 3px;
+        .contact-title {
+          font-family: 'Anton', sans-serif;
+          font-size: 58px;
+          line-height: 0.92;
+          letter-spacing: 1px;
         }
-        .sc-main-top {
-          display: flex;
-          align-items: center;
+
+        .contact-grid {
+          display: grid;
+          grid-template-columns: 1fr;
           gap: 12px;
+          margin-top: 22px;
         }
 
-        .sc-icon {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          width: 32px;
-          text-align: center;
-          flex-shrink: 0;
-          color: rgba(255,255,255,0.15);
-          transition: color 0.2s ease;
-          user-select: none;
-        }
-        .sc-bar-outer.active .sc-icon { color: rgba(255,255,255,0.25); }
-
-        .sc-label {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
-          letter-spacing: 4px;
-          line-height: 1;
-          color: rgba(255,255,255,0.85);
-          transition: color 0.2s ease;
-          user-select: none;
-        }
-        .sc-bar-outer.active .sc-label { color: #111111; }
-
-        /* lb/rb nav row */
-        @keyframes sc-arrow-left {
-          0%, 100% { transform: translateX(0); opacity: 1; }
-          50%       { transform: translateX(-5px); opacity: 0.4; }
-        }
-        @keyframes sc-arrow-right {
-          0%, 100% { transform: translateX(0); opacity: 1; }
-          50%       { transform: translateX(5px); opacity: 0.4; }
-        }
-        .sc-nav-btn {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 12px;
-          letter-spacing: 2px;
-          color: #111;
-          border: 1px solid rgba(0,0,0,0.35);
-          padding: 1px 7px;
-          line-height: 1.5;
-          user-select: none;
-        }
-        .sc-nav-arrow {
-          font-size: 12px;
-          color: #c4001a;
-          display: inline-block;
-        }
-        .sc-nav-arrow.left  { animation: sc-arrow-left  0.8s ease-in-out infinite; }
-        .sc-nav-arrow.right { animation: sc-arrow-right 0.8s ease-in-out infinite; }
-
-        /* right: stats group */
-        .sc-stats {
-          display: flex;
+        .contact-row {
+          display: grid;
+          grid-template-columns: 150px minmax(0, 1fr);
           align-items: center;
-          gap: 10px;
-          padding-right: 24px;
-          flex-shrink: 0;
+          gap: 18px;
+          min-height: 68px;
+          padding: 12px 18px;
+          background: rgba(8, 18, 72, 0.96);
+          clip-path: polygon(0 0, 100% 0, calc(100% - 16px) 100%, 0 100%);
+          color: #edfaff;
+          text-decoration: none;
+          box-shadow: inset 0 0 0 1px rgba(140, 239, 255, 0.12);
+          transition: transform 0.16s ease, background 0.16s ease;
         }
 
-        .sc-stat {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
+        .contact-row:hover {
+          transform: translateX(5px);
+          background: rgba(12, 26, 94, 1);
         }
 
-        .sc-stat-top {
-          display: flex;
-          align-items: baseline;
-          gap: 4px;
-        }
-
-        .sc-stat-tag {
+        .contact-label {
           font-family: 'Bebas Neue', sans-serif;
-          font-size: 9px;
-          letter-spacing: 1.5px;
-          padding: 1px 4px;
-          border-width: 1px;
-          border-style: solid;
-          line-height: 1.4;
-          user-select: none;
+          font-size: 30px;
+          letter-spacing: 2px;
+          color: #94f4ff;
         }
 
-        .sc-stat-num {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 26px;
-          font-style: italic;
+        .contact-value {
+          font-family: 'Anton', sans-serif;
+          font-size: 28px;
           line-height: 1;
           color: #ffffff;
-          letter-spacing: 1px;
-          user-select: none;
-          transition: color 0.2s ease;
-        }
-        .sc-bar-outer.active .sc-stat-num { color: #111111; }
-
-        .sc-stat-bars {
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-          gap: 1px;
-          margin-top: 2px;
-        }
-        .sc-stat-bar-color {
-          height: 3px;
-          width: 100%;
-        }
-        .sc-stat-bar-black {
-          height: 2px;
-          width: 100%;
-          background: #000;
+          overflow-wrap: anywhere;
         }
 
-        /* character portrait */
-        .sc-char {
-          position: absolute;
-          top: 0;
-          left: 110px;
-          height: 100%;
-          width: auto;
-          max-width: 160px;
-          object-fit: cover;
-          object-position: top;
-          pointer-events: none;
-          z-index: 3;
-          clip-path: polygon(20px 0%, 100% 0%, calc(100% - 20px) 100%, 0% 100%);
+        .contact-footer {
+          margin-top: 20px;
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 16px;
+          letter-spacing: 1.5px;
+          color: rgba(255,255,255,0.46);
+          text-align: left;
+          overflow-wrap: anywhere;
         }
 
-        /* right-side nav bar */
-        @keyframes sc-right-nav-pop {
-          0%   { opacity: 0; transform: scale(0.55) translateY(-10px); }
-          65%  { opacity: 1; transform: scale(1.1) translateY(2px); }
-          100% { opacity: 1; transform: scale(1) translateY(0); }
-        }
-        .sc-right-nav {
-          position: fixed;
-          top: 40px;
-          right: 40px;
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          pointer-events: none;
-          z-index: 50;
-          animation: sc-right-nav-pop 0.38s cubic-bezier(0.22,1,0.36,1) both;
-        }
-        .sc-right-nav .sc-nav-btn {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 100px;
-          letter-spacing: 3px;
-          line-height: 1;
-          user-select: none;
-          color: #fff;
-          -webkit-text-stroke: 2px #000;
-          paint-order: stroke fill;
-          background: none;
-          border: none;
-          padding: 0 6px;
-        }
-        .sc-right-nav .sc-nav-label {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 28px;
-          letter-spacing: 3px;
-          line-height: 1;
-          user-select: none;
-          color: #111;
-          padding: 0 8px;
-        }
-        .sc-right-nav .sc-nav-arrow {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          color: #c4001a;
-          display: inline-block;
-          user-select: none;
-        }
-        .sc-right-nav .sc-nav-arrow.left  { animation: sc-arrow-left  0.8s ease-in-out infinite; }
-        .sc-right-nav .sc-nav-arrow.right { animation: sc-arrow-right 0.8s ease-in-out infinite; }
+        @media (max-width: 700px) {
+          .contact-root {
+            align-items: flex-start;
+            padding: 7vh 4vw;
+          }
 
-        /* info bar under nav */
-        @keyframes sc-infobar-in {
-          0%   { opacity: 0; transform: translateX(40px); }
-          60%  { opacity: 1; transform: translateX(-4px); }
-          100% { opacity: 1; transform: translateX(0); }
-        }
-        .sc-info-bar-wrap {
-          position: fixed;
-          right: 0;
-          left: 65%;
-          height: 46px;
-          background: transparent;
-          pointer-events: all;
-          cursor: pointer;
-          z-index: 50;
-          padding: 0;
-          animation: sc-infobar-in 0.35s cubic-bezier(0.22,1,0.36,1) both;
-        }
-        .sc-info-bar-wrap.selected {
-          background: #111;
-          padding: 1.5px;
-          border-radius: 8px;
-        }
-        .sc-info-bar {
-          position: relative;
-          width: 100%;
-          height: 100%;
-          background: transparent;
-          display: flex;
-          align-items: center;
-          overflow: hidden;
-        }
-        .sc-info-bar-wrap.selected .sc-info-bar {
-          background: #fff;
-          border-radius: 7px;
-        }
-        .sc-info-bar-new {
-          position: absolute;
-          left: -40px;
-          bottom: 0;
-          height: 65%;
-          width: auto;
-          pointer-events: none;
-          z-index: 3;
-        }
-        .sc-info-bar-wrap.selected .sc-info-bar::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 4px;
-          background: #c4001a;
-          z-index: 1;
-        }
-        .sc-info-bar-text {
-          flex: 1;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 2px;
-          color: #111;
-          padding: 0 14px;
-          user-select: none;
-        }
-        .sc-info-bar-box {
-          height: 70%;
-          background: #000;
-          display: flex;
-          align-items: center;
-          padding: 0 12px;
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 20px;
-          letter-spacing: 1px;
-          color: #fff;
-          flex-shrink: 0;
-          border-radius: 6px;
-          margin-right: 4px;
-          user-select: none;
-        }
+          .contact-panel {
+            width: 92vw;
+            padding: 16px 16px 20px;
+            transform: translateY(18px);
+          }
 
-        .sc-info-bar-icon {
-          height: 55%;
-          width: auto;
-          flex-shrink: 0;
-          margin-left: 14px;
-          object-fit: contain;
-          pointer-events: none;
-          user-select: none;
-        }
+          .contact-panel.mounted {
+            transform: translateY(0);
+          }
 
-        .sc-info-bar-count {
-          font-family: 'Bebas Neue', sans-serif;
-          font-size: 22px;
-          letter-spacing: 1px;
-          color: #111;
-          margin-right: 80px;
-          flex-shrink: 0;
-          user-select: none;
-        }
+          .contact-heading {
+            grid-template-columns: 54px 1fr;
+            min-height: 64px;
+            gap: 10px;
+            padding: 0 14px;
+          }
 
-        /* footer hints */
-        .sc-footer {
-          position: fixed;
-          bottom: 20px; right: 28px;
-          display: flex; flex-direction: column;
-          align-items: flex-end; gap: 5px;
-          font-family: 'Bebas Neue', sans-serif;
-          z-index: 50;
-          opacity: 0;
-          transition: opacity 0.4s ease 0.6s;
-        }
-        .sc-footer.mounted { opacity: 1; }
-        .sc-footer-row {
-          display: flex; align-items: center; gap: 8px;
-          font-size: 13px; letter-spacing: 2px;
-          color: rgba(255,255,255,0.22);
-        }
-        .sc-footer-key {
-          border: 1px solid rgba(255,255,255,0.15);
-          border-radius: 3px;
-          padding: 1px 6px; font-size: 11px;
+          .contact-index {
+            font-size: 34px;
+          }
+
+          .contact-title {
+            font-size: 38px;
+          }
+
+          .contact-row {
+            grid-template-columns: 92px minmax(0, 1fr);
+            gap: 10px;
+            min-height: 58px;
+            padding: 10px 12px;
+          }
+
+          .contact-label {
+            font-size: 22px;
+          }
+
+          .contact-value {
+            font-size: 16px;
+          }
         }
       `}</style>
 
-      <div className="sc-root" role="navigation">
-        {ITEMS.map((item, i) => (
-          <div
-            key={item.id}
-            className={`sc-bar-outer${active === i ? " active" : ""}${mounted ? " mounted" : ""}`}
-            onClick={() => {
-              if (active === i) window.open(item.href, "_blank");
-              else setActive(i);
-            }}
-            onMouseEnter={() => setActive(i)}
-          >
-            <div className="sc-bar-red" />
-            <div className="sc-bar">
-              <img className="sc-char" src={CHARS[i]} alt="" />
-              <div className="sc-bar-fill" />
-              <div className="sc-bar-shade" />
-              <div className="sc-bar-content">
-                <div className="sc-role">{ROLES[i].text}</div>
-                <div className="sc-main">
-                  <div className="sc-main-top">
-                    <div className="sc-icon">{item.icon}</div>
-                    <div className="sc-label">{item.label}</div>
-                  </div>
-                </div>
-                <div className="sc-stats">
-                  {item.stats.map(s => (
-                    <div className="sc-stat" key={s.tag}>
-                      <div className="sc-stat-top">
-                        <span className="sc-stat-tag" style={{ color: s.color, borderColor: s.color }}>{s.tag}</span>
-                        <span className="sc-stat-num">{s.value}</span>
-                      </div>
-                      <div className="sc-stat-bars">
-                        <div className="sc-stat-bar-color" style={{ background: s.color }} />
-                        <div className="sc-stat-bar-black" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+      <div className="contact-root">
+        <section className={`contact-panel${mounted ? " mounted" : ""}`}>
+          <div className="contact-heading">
+            <div className="contact-index">05</div>
+            <div className="contact-title">CONTACT</div>
           </div>
-        ))}
-      </div>
 
-      {mounted && (
-        <div className="sc-right-nav" key={active}>
-          <span className="sc-nav-arrow left">◄</span>
-          <span className="sc-nav-btn">LB</span>
-          <span className="sc-nav-label">{ITEMS[active].label}</span>
-          <span className="sc-nav-btn">RB</span>
-          <span className="sc-nav-arrow right">►</span>
-        </div>
-      )}
-
-      {mounted && Array.from({ length: ITEMS[active].bars }).map((_, i) => (
-        <div
-          className={`sc-info-bar-wrap${activeInfoBar === i ? " selected" : ""}`}
-          key={`bar-${active}-${i}`}
-          style={{ top: `${155 + i * 52}px`, animationDelay: `${i * 50}ms` }}
-          onClick={() => setActiveInfoBar(i)}
-          onMouseEnter={() => setActiveInfoBar(i)}
-        >
-          {ITEMS[active].newBars.includes(i) && (
-            <img className="sc-info-bar-new" src={newsign} alt="" />
-          )}
-          <div className="sc-info-bar">
-            <img className="sc-info-bar-icon" src={ITEMS[active].barIcon} alt="" />
-            <span className="sc-info-bar-text">{ITEMS[active].links[i].label}</span>
-            <span className="sc-info-bar-box">{ITEMS[active].links[i].kind}</span>
-            <span className="sc-info-bar-count">{ITEMS[active].links[i].value}</span>
+          <div className="contact-grid">
+            {CONTACT_ITEMS.map((item) => (
+              <a className="contact-row" href={item.href} key={item.label} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noreferrer">
+                <div className="contact-label">{item.label}</div>
+                <div className="contact-value">{item.value}</div>
+              </a>
+            ))}
           </div>
-        </div>
-      ))}
 
-      <div className={`sc-footer${mounted ? " mounted" : ""}`}>
-        <div className="sc-footer-row"><span className="sc-footer-key">↑↓</span><span>SELECT</span></div>
-        <div className="sc-footer-row"><span className="sc-footer-key">↵</span><span>OPEN</span></div>
-        <div className="sc-footer-row"><span className="sc-footer-key">ESC</span><span>BACK</span></div>
+          <div className="contact-footer">ESC / BACKSPACE / LEFT TO RETURN</div>
+        </section>
       </div>
     </div>
   );

@@ -18,31 +18,47 @@ function MenuScreen() {
   )
 }
 
+function HomeButton() {
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  if (location.pathname === '/') return null
+
+  return (
+    <button className="home-return" type="button" onClick={() => navigate('/')}>
+      HOME
+    </button>
+  )
+}
+
 function AnimatedRoutes() {
   const location = useLocation()
   return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={
-          <PageTransition><MenuScreen /></PageTransition>
-        } />
-        <Route path="/about" element={
-          <PageTransition variant="about"><AboutMe /></PageTransition>
-        } />
-        <Route path="/resume" element={
-          <PageTransition variant="resume"><ResumePage src={main1} /></PageTransition>
-        } />
-        <Route path="/projects" element={
-          <PageTransition variant="resume"><ResumePage src={main1} initialActive={2} /></PageTransition>
-        } />
-        <Route path="/experience" element={
-          <PageTransition variant="resume"><ResumePage src={main1} initialActive={3} /></PageTransition>
-        } />
-        <Route path="/socials" element={
-          <PageTransition variant="socials"><Socials /></PageTransition>
-        } />
-      </Routes>
-    </AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={
+            <PageTransition><MenuScreen /></PageTransition>
+          } />
+          <Route path="/about" element={
+            <PageTransition variant="about"><AboutMe /></PageTransition>
+          } />
+          <Route path="/resume" element={
+            <PageTransition variant="resume"><ResumePage src={main1} /></PageTransition>
+          } />
+          <Route path="/projects" element={
+            <PageTransition variant="resume"><ResumePage src={main1} initialActive={2} initialMode="details" /></PageTransition>
+          } />
+          <Route path="/experience" element={
+            <PageTransition variant="resume"><ResumePage src={main1} initialActive={3} initialMode="details" /></PageTransition>
+          } />
+          <Route path="/socials" element={
+            <PageTransition variant="socials"><Socials /></PageTransition>
+          } />
+        </Routes>
+      </AnimatePresence>
+      <HomeButton />
+    </>
   )
 }
 

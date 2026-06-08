@@ -28,3 +28,40 @@ body {
   width: 100vw;
   height: 100vh;
 }
+
+.home-return {
+  position: fixed;
+  left: 24px;
+  bottom: 22px;
+  z-index: 80;
+  min-width: 116px;
+  min-height: 44px;
+  padding: 8px 18px;
+  border: 0;
+  background: #ffffff;
+  color: #050814;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+  box-shadow: 8px 6px 0 rgba(196, 0, 26, 0.9);
+  font-family: 'Bebas Neue', 'Anton', Impact, sans-serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.home-return:hover {
+  transform: translateX(4px);
+  box-shadow: 10px 6px 0 rgba(196, 0, 26, 0.95);
+}
+
+@media (max-width: 700px) {
+  .home-return {
+    left: 16px;
+    bottom: 14px;
+    min-width: 92px;
+    min-height: 38px;
+    padding: 7px 14px;
+    font-size: 21px;
+  }
+}
