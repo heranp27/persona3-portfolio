@@ -78,10 +78,10 @@ const HOBBIES = [
     ],
   },
   {
-    id: "breweries",
-    label: "Breweries",
+    id: "food-critic",
+    label: "Self Proclaimed Food Critic",
     body: [
-      "I enjoy going to breweries for games or to just try out new flavors.",
+      "I try to eat out at a new restaurant at least once a week. And if I repeat a restaurant I get something new. I keep all my restaurant ratings and reviews on the Beli app. My Beli is: @HeranP27.",
     ],
   },
   {
