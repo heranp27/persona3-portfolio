@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import main1 from './assets/main1.mp4'
@@ -6,6 +7,8 @@ import ResumePage from './ResumePage'
 import PageTransition from './PageTransition'
 import Socials from './Socials'
 import AboutMe from './AboutMe'
+import BackgroundMusic from './BackgroundMusic'
+import SelectionSound from './SelectionSound'
 import './App.css'
 
 function MenuScreen() {
@@ -31,10 +34,31 @@ function HomeButton() {
   )
 }
 
+function MusicToggle({ muted, onToggle }) {
+  return (
+    <button
+      className={`music-toggle${muted ? ' muted' : ''}`}
+      type="button"
+      onClick={(event) => {
+        event.stopPropagation()
+        onToggle()
+      }}
+      aria-label={muted ? 'Turn music on' : 'Turn music off'}
+      title={muted ? 'Turn music on' : 'Turn music off'}
+    >
+      <span className="music-toggle-icon" aria-hidden="true" />
+    </button>
+  )
+}
+
 function AnimatedRoutes() {
   const location = useLocation()
+  const [musicMuted, setMusicMuted] = useState(false)
+
   return (
     <>
+      <BackgroundMusic muted={musicMuted} />
+      <SelectionSound />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={
@@ -58,6 +82,7 @@ function AnimatedRoutes() {
         </Routes>
       </AnimatePresence>
       <HomeButton />
+      <MusicToggle muted={musicMuted} onToggle={() => setMusicMuted((muted) => !muted)} />
     </>
   )
 }

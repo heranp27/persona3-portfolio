@@ -32,7 +32,7 @@ body {
 .home-return {
   position: fixed;
   left: 24px;
-  bottom: 22px;
+  bottom: 84px;
   z-index: 80;
   min-width: 116px;
   min-height: 44px;
@@ -55,13 +55,90 @@ body {
   box-shadow: 10px 6px 0 rgba(196, 0, 26, 0.95);
 }
 
+.music-toggle {
+  position: fixed;
+  left: 24px;
+  bottom: 22px;
+  z-index: 130;
+  width: 50px;
+  height: 44px;
+  border: 0;
+  background: #ffffff;
+  color: #050814;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  box-shadow: 7px 5px 0 rgba(196, 0, 26, 0.9);
+  cursor: pointer;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.music-toggle:hover {
+  transform: translateX(4px);
+  box-shadow: 9px 5px 0 rgba(196, 0, 26, 0.95);
+}
+
+.music-toggle-icon {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  width: 15px;
+  height: 20px;
+  background: currentColor;
+  clip-path: polygon(0 28%, 34% 28%, 72% 0, 72% 100%, 34% 72%, 0 72%);
+}
+
+.music-toggle-icon::before,
+.music-toggle-icon::after {
+  content: "";
+  position: absolute;
+  border: 2px solid currentColor;
+  border-left: 0;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 999px;
+}
+
+.music-toggle-icon::before {
+  left: 12px;
+  top: 4px;
+  width: 9px;
+  height: 10px;
+}
+
+.music-toggle-icon::after {
+  left: 16px;
+  top: 0;
+  width: 14px;
+  height: 18px;
+}
+
+.music-toggle.muted::after {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 21px;
+  width: 32px;
+  height: 4px;
+  background: #c4001a;
+  transform: rotate(-35deg);
+  transform-origin: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
 @media (max-width: 700px) {
   .home-return {
     left: 16px;
-    bottom: 14px;
+    bottom: 70px;
     min-width: 92px;
     min-height: 38px;
     padding: 7px 14px;
     font-size: 21px;
   }
+
+  .music-toggle {
+    left: 16px;
+    bottom: 14px;
+    width: 46px;
+    height: 40px;
+  }
+
 }
